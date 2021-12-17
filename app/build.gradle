@@ -28,7 +28,7 @@ dependencies {
 
 javafx {
     version = "11.0.2"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.web' ]
 }
 
 application {
@@ -39,6 +39,16 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+sourceSets.main {
+    java {
+        srcDir 'src/main/java' //assume that your source codes are inside this path
+    }
+    resources {
+        srcDirs = ['src/main/java', 'src/main/resources']
+        exclude "**/*.java"
+    }
 }
 
 task fatJar(type: Jar) {

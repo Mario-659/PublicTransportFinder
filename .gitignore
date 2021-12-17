@@ -1,7 +1,10 @@
 # From https://github.com/github/gitignore/blob/master/Gradle.gitignore
 .gradle
 /build/
+
 app/build/
+/app/src/main/java/PublicTransportFinder/view/config.js
+
 
 # Ignore Gradle GUI config
 gradle-app.setting
