@@ -18,6 +18,7 @@
         mapTypeControl: false,
         navigationControl: false,
         streetViewControl: false,
+        fullscreenControl: false,
         backgroundColor: "#666970"
       };
 
@@ -47,14 +48,49 @@
         document.map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
       }
 
-      document.goToLocation = function goToLocation(searchString) {
-        document.geocoder.geocode( {'address': searchString}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            document.map.setCenter(results[0].geometry.location);
-          } else {
-            alert("Geocode was not successful for the following reason: " + status);
-          }
+      var busMarkers = [];
+      var tramMarkers = [];
+
+      document.addBusMarker = function addBusMarker(x, y, line) {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(x, y),
+          map: document.map,
+          label: line
         });
+        busMarkers.push(marker);
+      }
+
+      document.addTramMarker = function addTramMarker(x, y, line) {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(x, y),
+          map: document.map,
+          label: line
+        });
+        tramMarkers.push(marker);
+      }
+
+      function setMapOnAll(markers, map) {
+        for ( let i=0; i<markers.length; i++){
+          markers[i].setMap(map);
+        }
+      }
+
+      document.hideTramMarkers = function hideTramMarkers(){
+        setMapOnAll(tramMarkers, document.map);
+      }
+
+      document.deleteTramMarkers = function deleteTramMarkers(){
+        document.hideTramMarkers();
+        tramMarkers = [];
+      }
+
+      document.hideBusMarkers = function hideBusMarkers(){
+        setMapOnAll(busMarkers, document.map);
+      }
+
+      document.deleteBusMarkers = function deleteBusMarkers (){
+        document.hideBusMarkers();
+        busMarkers = [];
       }
     }
   </script>

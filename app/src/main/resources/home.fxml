@@ -28,9 +28,12 @@
                     <MenuItem mnemonicParsing="false" text="Close" />
                   </items>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="Buses">
+                  <Menu mnemonicParsing="false" text="Map type">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" onAction="#setRoadmap" text="Roadmap" />
+                        <MenuItem mnemonicParsing="false" onAction="#setSatellite" text="Satellite" />
+                        <MenuItem mnemonicParsing="false" onAction="#setHybrid" text="Hybrid" />
+                        <MenuItem mnemonicParsing="false" onAction="#setTerrain" text="Terrain" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Trams">
@@ -97,81 +100,81 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='A' text="A" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='C' text="C" GridPane.columnIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='D' text="D" GridPane.columnIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='K' text="K" GridPane.columnIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='N' text="N" GridPane.columnIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='100' text="100" GridPane.columnIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='101' text="101" GridPane.columnIndex="6" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='102' text="102" GridPane.columnIndex="7" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='103' text="103" GridPane.columnIndex="8" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='104' text="104" GridPane.columnIndex="9" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='105' text="105" GridPane.columnIndex="10" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='106' text="106" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='107' text="107" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='108' text="108" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='109' text="109" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='110' text="110" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='111' text="111" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='112' text="112" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='113' text="113" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='114' text="114" GridPane.columnIndex="8" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='115' text="115" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='116' text="116" GridPane.columnIndex="10" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='118' text="118" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='119' text="119" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='120' text="120" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='121' text="121" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='122' text="122" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='124' text="124" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='125' text="125" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='126' text="126" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='127' text="127" GridPane.columnIndex="8" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='128' text="128" GridPane.columnIndex="9" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='129' text="129" GridPane.columnIndex="10" GridPane.rowIndex="2" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='130' text="130" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='131' text="131" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='132' text="132" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='133' text="133" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='134' text="134" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='136' text="136" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='140' text="140" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='142' text="142" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='143' text="143" GridPane.columnIndex="8" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='144' text="144" GridPane.columnIndex="9" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='145' text="145" GridPane.columnIndex="10" GridPane.rowIndex="3" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='146' text="146" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='147' text="147" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='148' text="148" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='149' text="149" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='150' text="150" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='151' text="151" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='206' text="206" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='240' text="240" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='241' text="241" GridPane.columnIndex="8" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='242' text="242" GridPane.columnIndex="9" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='243' text="243" GridPane.columnIndex="10" GridPane.rowIndex="4" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='244' text="244" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='245' text="245" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='246' text="246" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='247' text="247" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='248' text="248" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='249' text="249" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='250' text="250" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='251' text="251" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='253' text="253" GridPane.columnIndex="8" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='255' text="255" GridPane.columnIndex="9" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='257' text="257" GridPane.columnIndex="10" GridPane.rowIndex="5" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='259' text="259" GridPane.rowIndex="6" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='315' text="315" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='319' text="319" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='602' text="602" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='607' text="607" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='700' text="700" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='703' text="703" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='709' text="709" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-                                           <Button mnemonicParsing="false" onAction="#addBusTracker" fx:id='731' text="731" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+                                           <Button fx:id="A" mnemonicParsing="false" onAction="#addBusTracker" text="A" />
+                                           <Button fx:id="C" mnemonicParsing="false" onAction="#addBusTracker" text="C" GridPane.columnIndex="1" />
+                                           <Button fx:id="D" mnemonicParsing="false" onAction="#addBusTracker" text="D" GridPane.columnIndex="2" />
+                                           <Button fx:id="K" mnemonicParsing="false" onAction="#addBusTracker" text="K" GridPane.columnIndex="3" />
+                                           <Button fx:id="N" mnemonicParsing="false" onAction="#addBusTracker" text="N" GridPane.columnIndex="4" />
+                                           <Button fx:id="100" mnemonicParsing="false" onAction="#addBusTracker" text="100" GridPane.columnIndex="5" />
+                                           <Button fx:id="101" mnemonicParsing="false" onAction="#addBusTracker" text="101" GridPane.columnIndex="6" />
+                                           <Button fx:id="102" mnemonicParsing="false" onAction="#addBusTracker" text="102" GridPane.columnIndex="7" />
+                                           <Button fx:id="103" mnemonicParsing="false" onAction="#addBusTracker" text="103" GridPane.columnIndex="8" />
+                                           <Button fx:id="104" mnemonicParsing="false" onAction="#addBusTracker" text="104" GridPane.columnIndex="9" />
+                                           <Button fx:id="105" mnemonicParsing="false" onAction="#addBusTracker" text="105" GridPane.columnIndex="10" />
+                                           <Button fx:id="106" mnemonicParsing="false" onAction="#addBusTracker" text="106" GridPane.rowIndex="1" />
+                                           <Button fx:id="107" mnemonicParsing="false" onAction="#addBusTracker" text="107" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                           <Button fx:id="108" mnemonicParsing="false" onAction="#addBusTracker" text="108" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                           <Button fx:id="109" mnemonicParsing="false" onAction="#addBusTracker" text="109" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                           <Button fx:id="110" mnemonicParsing="false" onAction="#addBusTracker" text="110" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                           <Button fx:id="111" mnemonicParsing="false" onAction="#addBusTracker" text="111" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                           <Button fx:id="112" mnemonicParsing="false" onAction="#addBusTracker" text="112" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                           <Button fx:id="113" mnemonicParsing="false" onAction="#addBusTracker" text="113" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                                           <Button fx:id="114" mnemonicParsing="false" onAction="#addBusTracker" text="114" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                                           <Button fx:id="115" mnemonicParsing="false" onAction="#addBusTracker" text="115" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                                           <Button fx:id="116" mnemonicParsing="false" onAction="#addBusTracker" text="116" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+                                           <Button fx:id="118" mnemonicParsing="false" onAction="#addBusTracker" text="118" GridPane.rowIndex="2" />
+                                           <Button fx:id="119" mnemonicParsing="false" onAction="#addBusTracker" text="119" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                           <Button fx:id="120" mnemonicParsing="false" onAction="#addBusTracker" text="120" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                           <Button fx:id="121" mnemonicParsing="false" onAction="#addBusTracker" text="121" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                           <Button fx:id="122" mnemonicParsing="false" onAction="#addBusTracker" text="122" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                           <Button fx:id="124" mnemonicParsing="false" onAction="#addBusTracker" text="124" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                                           <Button fx:id="125" mnemonicParsing="false" onAction="#addBusTracker" text="125" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                                           <Button fx:id="126" mnemonicParsing="false" onAction="#addBusTracker" text="126" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                                           <Button fx:id="127" mnemonicParsing="false" onAction="#addBusTracker" text="127" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+                                           <Button fx:id="128" mnemonicParsing="false" onAction="#addBusTracker" text="128" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+                                           <Button fx:id="129" mnemonicParsing="false" onAction="#addBusTracker" text="129" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+                                           <Button fx:id="130" mnemonicParsing="false" onAction="#addBusTracker" text="130" GridPane.rowIndex="3" />
+                                           <Button fx:id="131" mnemonicParsing="false" onAction="#addBusTracker" text="131" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                           <Button fx:id="132" mnemonicParsing="false" onAction="#addBusTracker" text="132" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                           <Button fx:id="133" mnemonicParsing="false" onAction="#addBusTracker" text="133" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                           <Button fx:id="134" mnemonicParsing="false" onAction="#addBusTracker" text="134" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                           <Button fx:id="136" mnemonicParsing="false" onAction="#addBusTracker" text="136" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                           <Button fx:id="140" mnemonicParsing="false" onAction="#addBusTracker" text="140" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                                           <Button fx:id="142" mnemonicParsing="false" onAction="#addBusTracker" text="142" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                                           <Button fx:id="143" mnemonicParsing="false" onAction="#addBusTracker" text="143" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+                                           <Button fx:id="144" mnemonicParsing="false" onAction="#addBusTracker" text="144" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+                                           <Button fx:id="145" mnemonicParsing="false" onAction="#addBusTracker" text="145" GridPane.columnIndex="10" GridPane.rowIndex="3" />
+                                           <Button fx:id="146" mnemonicParsing="false" onAction="#addBusTracker" text="146" GridPane.rowIndex="4" />
+                                           <Button fx:id="147" mnemonicParsing="false" onAction="#addBusTracker" text="147" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                                           <Button fx:id="148" mnemonicParsing="false" onAction="#addBusTracker" text="148" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                           <Button fx:id="149" mnemonicParsing="false" onAction="#addBusTracker" text="149" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                           <Button fx:id="150" mnemonicParsing="false" onAction="#addBusTracker" text="150" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                           <Button fx:id="151" mnemonicParsing="false" onAction="#addBusTracker" text="151" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                                           <Button fx:id="206" mnemonicParsing="false" onAction="#addBusTracker" text="206" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                                           <Button fx:id="240" mnemonicParsing="false" onAction="#addBusTracker" text="240" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                                           <Button fx:id="241" mnemonicParsing="false" onAction="#addBusTracker" text="241" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+                                           <Button fx:id="242" mnemonicParsing="false" onAction="#addBusTracker" text="242" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+                                           <Button fx:id="243" mnemonicParsing="false" onAction="#addBusTracker" text="243" GridPane.columnIndex="10" GridPane.rowIndex="4" />
+                                           <Button fx:id="244" mnemonicParsing="false" onAction="#addBusTracker" text="244" GridPane.rowIndex="5" />
+                                           <Button fx:id="245" mnemonicParsing="false" onAction="#addBusTracker" text="245" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                           <Button fx:id="246" mnemonicParsing="false" onAction="#addBusTracker" text="246" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                           <Button fx:id="247" mnemonicParsing="false" onAction="#addBusTracker" text="247" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                           <Button fx:id="248" mnemonicParsing="false" onAction="#addBusTracker" text="248" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                                           <Button fx:id="249" mnemonicParsing="false" onAction="#addBusTracker" text="249" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                                           <Button fx:id="250" mnemonicParsing="false" onAction="#addBusTracker" text="250" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                                           <Button fx:id="251" mnemonicParsing="false" onAction="#addBusTracker" text="251" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+                                           <Button fx:id="253" mnemonicParsing="false" onAction="#addBusTracker" text="253" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+                                           <Button fx:id="255" mnemonicParsing="false" onAction="#addBusTracker" text="255" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+                                           <Button fx:id="257" mnemonicParsing="false" onAction="#addBusTracker" text="257" GridPane.columnIndex="10" GridPane.rowIndex="5" />
+                                           <Button fx:id="259" mnemonicParsing="false" onAction="#addBusTracker" text="259" GridPane.rowIndex="6" />
+                                           <Button fx:id="315" mnemonicParsing="false" onAction="#addBusTracker" text="315" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                           <Button fx:id="319" mnemonicParsing="false" onAction="#addBusTracker" text="319" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                           <Button fx:id="602" mnemonicParsing="false" onAction="#addBusTracker" text="602" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                                           <Button fx:id="607" mnemonicParsing="false" onAction="#addBusTracker" text="607" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                                           <Button fx:id="700" mnemonicParsing="false" onAction="#addBusTracker" text="700" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                                           <Button fx:id="703" mnemonicParsing="false" onAction="#addBusTracker" text="703" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                                           <Button fx:id="709" mnemonicParsing="false" onAction="#addBusTracker" text="709" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+                                           <Button fx:id="731" mnemonicParsing="false" onAction="#addBusTracker" text="731" GridPane.columnIndex="8" GridPane.rowIndex="6" />
                                        </children>
                                     </GridPane>
                                     <Region maxHeight="70.0" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
@@ -195,26 +198,26 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                           <Button mnemonicParsing="false" fx:id="1" onAction="#addTramTracker" text="1" />
-                                           <Button mnemonicParsing="false" fx:id="2" onAction="#addTramTracker" text="2" GridPane.columnIndex="1" />
-                                           <Button mnemonicParsing="false" fx:id="3" onAction="#addTramTracker" text="3" GridPane.columnIndex="2" />
-                                           <Button mnemonicParsing="false" fx:id="4" onAction="#addTramTracker" text="4" GridPane.columnIndex="3" />
-                                           <Button mnemonicParsing="false" fx:id="5" onAction="#addTramTracker" text="5" GridPane.columnIndex="4" />
-                                           <Button mnemonicParsing="false" fx:id="6" onAction="#addTramTracker" text="6" GridPane.columnIndex="5" />
-                                           <Button mnemonicParsing="false" fx:id="7" onAction="#addTramTracker" text="7" GridPane.columnIndex="6" />
-                                           <Button mnemonicParsing="false" fx:id="8" onAction="#addTramTracker" text="8" GridPane.columnIndex="7" />
-                                           <Button mnemonicParsing="false" fx:id="9" onAction="#addTramTracker" text="9" GridPane.columnIndex="8" />
-                                           <Button mnemonicParsing="false" fx:id="10" onAction="#addTramTracker" text="10" GridPane.columnIndex="9" />
-                                           <Button mnemonicParsing="false" fx:id="11" onAction="#addTramTracker" text="11" GridPane.columnIndex="10" />
-                                           <Button mnemonicParsing="false" fx:id="15" onAction="#addTramTracker" text="15" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" fx:id="16" onAction="#addTramTracker" text="16" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" fx:id="17" onAction="#addTramTracker" text="17" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" fx:id="20" onAction="#addTramTracker" text="20" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" fx:id="23" onAction="#addTramTracker" text="23" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" fx:id="31" onAction="#addTramTracker" text="31" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" fx:id="33" onAction="#addTramTracker" text="33" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" fx:id="70" onAction="#addTramTracker" text="70" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                                           <Button mnemonicParsing="false" fx:id="74" onAction="#addTramTracker" text="74" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                                           <Button fx:id="1" mnemonicParsing="false" onAction="#addTramTracker" text="1" />
+                                           <Button fx:id="2" mnemonicParsing="false" onAction="#addTramTracker" text="2" GridPane.columnIndex="1" />
+                                           <Button fx:id="3" mnemonicParsing="false" onAction="#addTramTracker" text="3" GridPane.columnIndex="2" />
+                                           <Button fx:id="4" mnemonicParsing="false" onAction="#addTramTracker" text="4" GridPane.columnIndex="3" />
+                                           <Button fx:id="5" mnemonicParsing="false" onAction="#addTramTracker" text="5" GridPane.columnIndex="4" />
+                                           <Button fx:id="6" mnemonicParsing="false" onAction="#addTramTracker" text="6" GridPane.columnIndex="5" />
+                                           <Button fx:id="7" mnemonicParsing="false" onAction="#addTramTracker" text="7" GridPane.columnIndex="6" />
+                                           <Button fx:id="8" mnemonicParsing="false" onAction="#addTramTracker" text="8" GridPane.columnIndex="7" />
+                                           <Button fx:id="9" mnemonicParsing="false" onAction="#addTramTracker" text="9" GridPane.columnIndex="8" />
+                                           <Button fx:id="10" mnemonicParsing="false" onAction="#addTramTracker" text="10" GridPane.columnIndex="9" />
+                                           <Button fx:id="11" mnemonicParsing="false" onAction="#addTramTracker" text="11" GridPane.columnIndex="10" />
+                                           <Button fx:id="15" mnemonicParsing="false" onAction="#addTramTracker" text="15" GridPane.rowIndex="1" />
+                                           <Button fx:id="16" mnemonicParsing="false" onAction="#addTramTracker" text="16" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                           <Button fx:id="17" mnemonicParsing="false" onAction="#addTramTracker" text="17" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                           <Button fx:id="20" mnemonicParsing="false" onAction="#addTramTracker" text="20" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                           <Button fx:id="23" mnemonicParsing="false" onAction="#addTramTracker" text="23" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                           <Button fx:id="31" mnemonicParsing="false" onAction="#addTramTracker" text="31" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                           <Button fx:id="33" mnemonicParsing="false" onAction="#addTramTracker" text="33" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                           <Button fx:id="70" mnemonicParsing="false" onAction="#addTramTracker" text="70" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                                           <Button fx:id="74" mnemonicParsing="false" onAction="#addTramTracker" text="74" GridPane.columnIndex="8" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>

@@ -36,4 +36,24 @@ public class HomeController {
         String buttonId = ((Node) actionEvent.getSource()).getId();
         System.out.println(buttonId);
     }
+
+    @FXML
+    private void setRoadmap(ActionEvent actionEvent) {
+        engine.executeScript("document.setMapTypeRoad()");
+    }
+
+    @FXML
+    private void setSatellite(ActionEvent actionEvent) {
+        engine.executeScript("document.setMapTypeSatellite()");
+    }
+
+    @FXML
+    private void setHybrid(ActionEvent actionEvent) {
+        engine.executeScript("document.setMapTypeHybrid()");
+    }
+
+    @FXML
+    private void setTerrain(ActionEvent actionEvent) {
+        engine.executeScript("document.setMapTypeTerrain()");
+    }
 }
