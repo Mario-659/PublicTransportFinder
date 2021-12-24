@@ -92,6 +92,17 @@
         document.hideBusMarkers();
         busMarkers = [];
       }
+
+      var busLines = []
+
+      document.setBuses = function setBuses(buses){
+        busLines = buses;
+        for (let i=0; i<busLines.length; i++){
+          for (let j=0; j<busLines[i].length; j++){
+            document.addBusMarker(busLines[i][j].x, busLines[i][j].y, busLines[i][j].name)
+          }
+        }
+      }
     }
   </script>
 </head>
