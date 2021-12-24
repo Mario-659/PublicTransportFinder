@@ -11,13 +11,13 @@ import org.json.*;
 class ConnectionTest {
     private final Connection connection = new Connection();
 
-    @Test void getsJSONWithBuses() throws IOException, InterruptedException {
-        assertGetsJSON("busList[bus][]=", "132");
-    }
+//    @Test void getsJSONWithBuses() throws IOException, InterruptedException {
+//        assertGetsJSON("busList[bus][]=", "132");
+//    }
 
-    @Test void getsJSONWithTrams() throws IOException, InterruptedException {
-        assertGetsJSON("busList[tram][]=", "2");
-    }
+//    @Test void getsJSONWithTrams() throws IOException, InterruptedException {
+//        assertGetsJSON("busList[tram][]=", "2");
+//    }
 
     private void assertGetsJSON(String postPrefix, String line) throws IOException, InterruptedException {
         HttpResponse<String> response = connection.getResponse(postPrefix + line);
