@@ -1,4 +1,4 @@
-package PublicTransportFinder.view;
+package PublicTransportFinder.view.markerControllers;
 
 import PublicTransportFinder.database.accessors.TramAccessor;
 import javafx.scene.web.WebEngine;
@@ -12,7 +12,7 @@ public class TramMarkersController extends MarkerController{
     }
 
     @Override
-    void updateMarkers() {
+    public void updateMarkers() {
         engine.executeScript("document.setTramMarkers(" + dataToJSON() + ")");
     }
 }

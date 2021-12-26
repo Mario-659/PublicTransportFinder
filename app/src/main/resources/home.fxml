@@ -48,16 +48,20 @@
                         <CheckMenuItem mnemonicParsing="false" text="Tram markers" />
                     </items>
                   </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Set diff terrain" />
-                  </items>
-                </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#deleteMarkers" text="About" />
+                    <MenuItem mnemonicParsing="false" onAction="#update" text="About" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Refresh Rate">
+                     <items>
+                        <MenuItem fx:id="refresh1s" mnemonicParsing="false" onAction="#setRefreshRate" text="1 s" />
+                        <MenuItem fx:id="refresh5s" mnemonicParsing="false" onAction="#setRefreshRate" text="5 s" />
+                        <MenuItem fx:id="refresh10s" mnemonicParsing="false" onAction="#setRefreshRate" text="10 s" />
+                        <MenuItem fx:id="refresh15s" mnemonicParsing="false" onAction="#setRefreshRate" text="15 s" />
+                        <MenuItem fx:id="refresh30s" mnemonicParsing="false" onAction="#setRefreshRate" text="30 s" />
+                     </items>
+                  </Menu>
               </menus>
             </MenuBar>
          </children>

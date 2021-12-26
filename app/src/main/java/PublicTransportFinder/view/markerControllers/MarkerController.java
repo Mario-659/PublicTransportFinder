@@ -1,4 +1,4 @@
-package PublicTransportFinder.view;
+package PublicTransportFinder.view.markerControllers;
 
 import PublicTransportFinder.database.DataManager;
 import PublicTransportFinder.database.accessors.Accessor;
@@ -26,13 +26,11 @@ public abstract class MarkerController {
 
     abstract void updateMarkers();
 
-    protected void addMarker(ActionEvent actEv){
+    public void addMarker(ActionEvent actEv){
         dataManager.save(getId(actEv));
     }
 
-    protected void deleteMarker(ActionEvent actEv){
-        dataManager.delete(getId(actEv));
-    }
+    public void deleteMarker(ActionEvent actEv){ dataManager.delete(getId(actEv)); }
 
     protected String dataToJSON(){
         return JSONParser.parseToJSON(lines);
