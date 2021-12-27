@@ -3,63 +3,55 @@ package PublicTransportFinder.database;
 import PublicTransportFinder.database.accessors.Accessor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.json.JSONArray;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DataManager {
     private final Accessor accessor;
     private final ObservableList<String> data = FXCollections.observableArrayList();
-    private final List<String> storedLines = new ArrayList<>();
+    private final HashMap<String, String> storedLines = new HashMap<>();
 
     public DataManager(Accessor dataAccessor){
         this.accessor = dataAccessor;
     }
 
     public void save(String line){
-        if(storedLines.contains(line)) return;
+        if(storedLines.containsKey(line)) return;
         try {
-            data.add(accessor.get(line));
-            storedLines.add(line);
+            storedLines.put(line, accessor.get(line));
+            resetList();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     public void delete(String line){
-        for (String storedLine : data) {
-            if(line.equals(getName(storedLine))){
-                data.remove(line);
-                storedLines.remove(storedLine);
-                break;
-            }
+        if(storedLines.remove(line) != null){
+            resetList();
         }
     }
 
     public void deleteAll(){
-        data.clear();
         storedLines.clear();
+        resetList();
     }
 
     public void update(){
-        List<String> newList = new ArrayList<>();
-        for (String line : storedLines) {
-            try{
-                newList.add(accessor.get(line));
-            } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
+        try{
+            for (Map.Entry<String, String> entry : storedLines.entrySet()) {
+                    entry.setValue(accessor.get(entry.getKey()));
             }
-        }
-        data.setAll(newList);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace(); }
+        resetList();
     }
 
     public ObservableList<String> getData(){
         return data;
     }
 
-    private String getName(String JSON){
-        JSONArray array = new JSONArray(JSON);
-        return array.getJSONObject(0).getString("name");
+    private void resetList(){
+        data.setAll(storedLines.values());
     }
 }
