@@ -8,6 +8,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.ToggleButton;
 
 public abstract class MarkerController {
     private final DataManager dataManager;
@@ -27,7 +28,11 @@ public abstract class MarkerController {
     abstract void updateMarkers();
 
     public void addMarker(ActionEvent actEv){
-        dataManager.save(getId(actEv));
+        ToggleButton button = (ToggleButton) actEv.getSource();
+        if(button.isSelected()) dataManager.save(button.getId());
+        else {
+            dataManager.delete(button.getId());
+        }
     }
 
     public void deleteMarker(ActionEvent actEv){ dataManager.delete(getId(actEv)); }
