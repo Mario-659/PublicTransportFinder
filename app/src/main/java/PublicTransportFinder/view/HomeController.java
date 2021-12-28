@@ -29,7 +29,6 @@ public class HomeController {
         refresher = new Refresher(5, this::updateMarkers);
     }
 
-
     @FXML
     private void deleteMarkers(ActionEvent actionEvent) {
         engine.executeScript("document.clearAllBusTramMarkers()");
@@ -40,6 +39,12 @@ public class HomeController {
 
     @FXML
     private void addTramTracker(ActionEvent actionEvent) {tramController.addMarker(actionEvent);}
+
+    @FXML private void setGrey(ActionEvent actionEvent) {
+        engine.executeScript("document.setMapTypeGrey()"); }
+
+    @FXML private void setDark(ActionEvent actionEvent) {
+        engine.executeScript("document.setMapTypeDark()"); }
 
     @FXML private void setRoadmap(ActionEvent actionEvent) {
         engine.executeScript("document.setMapTypeRoad()"); }

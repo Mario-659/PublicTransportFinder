@@ -1,0 +1,100 @@
+.root{
+    -fx-background-color: #282a36;
+    lightBackgroundColor: #44475a;
+    middleBackgroundColor: #bbdefb;
+    darkBackgroundColor: #282a36;
+    darkBackgroundHoverColor: #3a3d4d;
+    busButtonColor: #ffb86c;
+    tramButtonColor: #ff5555;
+    buttonBackgroundColor: #44475a;
+}
+
+.menu-item{
+    -fx-background-color: darkBackgroundColor;
+}
+
+.menu-item:hover{
+    -fx-background-color: darkBackgroundHoverColor;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+#BusLabel, #TramsLabel {
+    -fx-font-family: "Hack";
+    -fx-font-size: 20;
+}
+
+#BusLabel {
+    -fx-text-fill: busButtonColor;
+}
+
+#TramsLabel{
+    -fx-text-fill: tramButtonColor;
+}
+
+.toggle-button {
+    -fx-background-radius: 0;
+    -fx-min-height: 5;
+    -fx-max-height: 30;
+    -fx-min-width: 60;
+    -fx-border-width: 1.5;
+}
+
+
+#BusButtons .toggle-button{
+    -fx-background-color: buttonBackgroundColor;
+    -fx-border-color: busButtonColor;
+    -fx-text-fill: busButtonColor;
+    -fx-font-family: "Trebuchet MS";
+}
+
+#BusButtons .toggle-button:hover {
+    -fx-background-color: busButtonColor;
+    -fx-text-fill: buttonBackgroundColor;
+}
+
+#BusButtons .toggle-button:pressed {
+    -fx-background-color: busButtonColor;
+    -fx-text-fill: buttonBackgroundColor;
+}
+
+#BusButtons .toggle-button:selected {
+    -fx-background-color: busButtonColor;;
+    -fx-text-fill: buttonBackgroundColor;
+}
+
+#TramButtons .toggle-button{
+    -fx-background-color: buttonBackgroundColor;
+    -fx-border-color: tramButtonColor;
+    -fx-text-fill: tramButtonColor;
+    -fx-font-family: "Trebuchet MS";
+}
+
+#TramButtons .toggle-button:hover {
+    -fx-background-color: tramButtonColor;
+    -fx-text-fill: buttonBackgroundColor;
+}
+
+#TramButtons .toggle-button:pressed {
+    -fx-background-color: tramButtonColor;
+    -fx-text-fill: buttonBackgroundColor;
+}
+
+#TramButtons .toggle-button:selected {
+    -fx-background-color: tramButtonColor;;
+    -fx-text-fill: buttonBackgroundColor;
+}
+
+.menu-bar {
+    -fx-background-color: darkBackgroundColor;
+}
+
+.split-pane {
+    -fx-background-color: lightBackgroundColor;
+}
+
+.split-pane-divider {
+    -fx-background-color: darkBackgroundColor;
+}
