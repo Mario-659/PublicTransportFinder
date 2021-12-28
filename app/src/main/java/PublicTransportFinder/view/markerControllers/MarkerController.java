@@ -35,8 +35,6 @@ public abstract class MarkerController {
         }
     }
 
-    public void deleteMarker(ActionEvent actEv){ dataManager.delete(getId(actEv)); }
-
     protected String dataToJSON(){
         return JSONParser.parseToJSON(lines);
     }
@@ -45,8 +43,5 @@ public abstract class MarkerController {
         Platform.runLater(this::updateMarkers);
     }
 
-    private String getId(ActionEvent actionEvent){
-        return ((Node) actionEvent.getSource()).getId();
-    }
-
+    public void refreshMarkers(){ dataManager.update();}
 }

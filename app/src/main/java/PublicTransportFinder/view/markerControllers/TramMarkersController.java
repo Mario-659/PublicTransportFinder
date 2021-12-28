@@ -12,7 +12,7 @@ public class TramMarkersController extends MarkerController{
     }
 
     @Override
-    public void updateMarkers() {
+    protected void updateMarkers() {
         engine.executeScript("document.setTramMarkers(" + dataToJSON() + ")");
     }
 }

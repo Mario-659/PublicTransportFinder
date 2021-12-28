@@ -12,7 +12,7 @@ public class BusMarkersController extends MarkerController{
     }
 
     @Override
-    public void updateMarkers() {
+    protected void updateMarkers() {
         engine.executeScript("document.setBusMarkers(" + dataToJSON() + ")");
     }
 }

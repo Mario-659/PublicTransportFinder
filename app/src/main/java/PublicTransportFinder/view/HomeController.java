@@ -66,8 +66,8 @@ public class HomeController {
 
     private void updateMarkers(){
         Platform.runLater( () -> {
-            busController.updateMarkers();
-            tramController.updateMarkers(); });
+            busController.refreshMarkers();
+            tramController.refreshMarkers(); });
     }
 
     private final Map<String, Integer> refreshRate = Map.of("refresh1s", 1, "refresh5s", 5, "refresh10s", 10, "refresh15s", 15, "refresh30s", 30);
