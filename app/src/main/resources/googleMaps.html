@@ -6,10 +6,11 @@
     body { height: 100%; margin: 0px; padding: 0px }
     #map_canvas { height: 100%; background-color: #666970; }
   </style>
+  <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Ai7YRP75d-XTlDhpt-ORGVj1WySzPok&callback=initMap"></script>
-  </script>
+  <script src="styles.js"></script>
   <script type="text/javascript">
-    function initialize() {
+    function initMap() {
       var latlng = new google.maps.LatLng(51.107883, 17.038538);
       var myOptions = {
         zoom: 12,
@@ -22,21 +23,20 @@
         backgroundColor: "#666970"
       };
 
-      document.geocoder = new google.maps.Geocoder();
-      document.map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+      const map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 
-      let busMarkers = [];
-      let tramMarkers = [];
+      const busMarkers = new MarkerClusterer(map, [], busClusterOptions);
+      const tramMarkers = new MarkerClusterer(map, [], tramClusterOptions);
 
       function addMarker(x, y, line, markersArray, markerStyling){
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(x, y),
-          map: document.map,
+          map: map,
           label: Object.assign(markerStyling.label, {text: line.toUpperCase()}),
           icon: markerStyling.icon,
           optimized: true
         });
-        markersArray.push(marker);
+        markersArray.addMarker(marker);
       }
 
       function extractMarkers(lines, markersArray, markerStyling){
@@ -48,7 +48,7 @@
       }
 
       document.setMarkers = function setMarkers(lines, markersArray, markerStyling) {
-        deleteMarkers(markersArray);
+        markersArray.clearMarkers()
         extractMarkers(lines, markersArray, markerStyling);
       }
 
@@ -60,17 +60,43 @@
         document.setMarkers(lines, tramMarkers, tramMarkerStyling)
       }
 
-
-      function setMapOnAll(markers, map) {
-        for ( let i=0; i<markers.length; i++){
-          markers[i].setMap(map);
-        }
+      document.zoomIn = function zoomIn() {
+        var zoomLevel = map.getZoom();
+        if (zoomLevel <= 20) map.setZoom(zoomLevel + 1);
       }
 
-      function deleteMarkers(markersArray){
-        setMapOnAll(markersArray, null);
-        markersArray = null;
+      document.zoomOut = function zoomOut() {
+        var zoomLevel = map.getZoom();
+        if (zoomLevel > 0) map.setZoom(zoomLevel - 1);
       }
+
+      document.setMapTypeGrey = function setMapTypeGrey() {
+        map.setOptions( {styles: MapStyleGrey})
+        map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+      }
+
+      document.setMapTypeDark = function setMapTypeDark() {
+        map.setOptions( {styles: MapStyleDark})
+        map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+      }
+
+      document.setMapTypeRoad = function setMapTypeRoad() {
+        map.setOptions( {styles: null})
+        map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+      }
+      document.setMapTypeSatellite = function setMapTypeSatellite() {
+        map.setOptions( {styles: null})
+        map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+      }
+      document.setMapTypeHybrid = function setMapTypeHybrid() {
+        map.setOptions( {styles: null})
+        map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+      }
+      document.setMapTypeTerrain = function setMapTypeTerrain() {
+        map.setOptions( {styles: null})
+        map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+      }
+
 
       const busMarkerStyling = {
         icon: {
@@ -96,209 +122,11 @@
         }
       };
 
-      document.zoomIn = function zoomIn() {
-        var zoomLevel = document.map.getZoom();
-        if (zoomLevel <= 20) document.map.setZoom(zoomLevel + 1);
-      }
-
-      document.zoomOut = function zoomOut() {
-        var zoomLevel = document.map.getZoom();
-        if (zoomLevel > 0) document.map.setZoom(zoomLevel - 1);
-      }
-
-      document.setMapTypeGrey = function setMapTypeGrey() {
-        document.map.setOptions( {styles: MapStyleGrey})
-        document.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-      }
-
-      document.setMapTypeDark = function setMapTypeDark() {
-        document.map.setOptions( {styles: MapStyleDark})
-        document.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-      }
-
-      document.setMapTypeRoad = function setMapTypeRoad() {
-        document.map.setOptions( {styles: null})
-        document.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-      }
-      document.setMapTypeSatellite = function setMapTypeSatellite() {
-        document.map.setOptions( {styles: null})
-        document.map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
-      }
-      document.setMapTypeHybrid = function setMapTypeHybrid() {
-        document.map.setOptions( {styles: null})
-        document.map.setMapTypeId(google.maps.MapTypeId.HYBRID);
-      }
-      document.setMapTypeTerrain = function setMapTypeTerrain() {
-        document.map.setOptions( {styles: null})
-        document.map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
-      }
-
-      const MapStyleDark = [
-        {
-          "featureType": "administrative",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#444444"
-            }
-          ]
-        },
-        {
-          "featureType": "landscape",
-          "elementType": "all",
-          "stylers": [
-            {
-              "color": "#44475a"
-            }
-          ]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "all",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "featureType": "road",
-          "elementType": "all",
-          "stylers": [
-            {
-              "saturation": -100
-            },
-            {
-              "lightness": 45
-            }
-          ]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "all",
-          "stylers": [
-            {
-              "visibility": "simplified"
-            }
-          ]
-        },
-        {
-          "featureType": "road.arterial",
-          "elementType": "labels.icon",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "featureType": "transit",
-          "elementType": "all",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "all",
-          "stylers": [
-            {
-              "color": "#46bcec"
-            },
-            {
-              "visibility": "on"
-            }
-          ]
-        }
-      ]
-
-      const MapStyleGrey = [
-        {
-          "featureType": "administrative",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#444444"
-            }
-          ]
-        },
-        {
-          "featureType": "landscape",
-          "elementType": "all",
-          "stylers": [
-            {
-              "color": "#f2f2f2"
-            }
-          ]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "all",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "featureType": "road",
-          "elementType": "all",
-          "stylers": [
-            {
-              "saturation": -100
-            },
-            {
-              "lightness": 45
-            }
-          ]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "all",
-          "stylers": [
-            {
-              "visibility": "simplified"
-            }
-          ]
-        },
-        {
-          "featureType": "road.arterial",
-          "elementType": "labels.icon",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "featureType": "transit",
-          "elementType": "all",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "all",
-          "stylers": [
-            {
-              "color": "#46bcec"
-            },
-            {
-              "visibility": "on"
-            }
-          ]
-        }
-      ]
       document.setMapTypeGrey();
     }
   </script>
 </head>
-<body onload="initialize()">
+<body onload="initMap()">
 <div id="map_canvas" style="width:100%; height:100%"></div>
 </body>
 </html>
