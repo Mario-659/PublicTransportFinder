@@ -14,4 +14,14 @@ public abstract class Accessor{
     public String get(String line) throws IOException, InterruptedException {
         return connection.getResponse(postParamsPrefix + line).body();
     }
+
+    public String get(String[] lines) throws IOException, InterruptedException{
+        return connection.getResponse(getQuery(lines)).body();
+    }
+
+    private String getQuery(String[] lines) throws IOException, InterruptedException{
+        StringBuilder query = new StringBuilder();
+        for (String line : lines) { query.append(postParamsPrefix).append(line).append("&"); }
+        return query.substring(0, query.length()-1);
+    }
 }

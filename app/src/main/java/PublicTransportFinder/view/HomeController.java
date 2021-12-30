@@ -1,14 +1,18 @@
 package PublicTransportFinder.view;
 
+import PublicTransportFinder.database.Radar;
 import PublicTransportFinder.tools.Refresher;
 import PublicTransportFinder.view.markerControllers.BusMarkersController;
 import PublicTransportFinder.view.markerControllers.TramMarkersController;
 import javafx.application.Platform;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import netscape.javascript.JSObject;
+
 import java.util.Map;
 
 public class HomeController {
@@ -17,6 +21,7 @@ public class HomeController {
     private BusMarkersController busController;
     private TramMarkersController tramController;
     private Refresher refresher;
+    private final Radar radar = new Radar();
 
     @FXML
     private void initialize(){
@@ -27,6 +32,9 @@ public class HomeController {
         tramController = new TramMarkersController(engine);
 
         refresher = new Refresher(5, this::updateMarkers);
+
+        JSObject bridge = (JSObject) engine.executeScript("window");
+        bridge.setMember("radar", radar);
     }
 
     @FXML

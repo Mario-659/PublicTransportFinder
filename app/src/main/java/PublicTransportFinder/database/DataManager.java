@@ -42,6 +42,9 @@ public class DataManager {
             for (Map.Entry<String, String> entry : storedLines.entrySet()) {
                     entry.setValue(accessor.get(entry.getKey()));
             }
+            //TODO zrobić tutaj zeby na raz ściągało i z tego nową hash mape może, a potem zrób ten radar
+//            String[] lines = storedLines.keySet().toArray(new String[0]);
+
         } catch (IOException | InterruptedException e) {
             e.printStackTrace(); }
         resetList();

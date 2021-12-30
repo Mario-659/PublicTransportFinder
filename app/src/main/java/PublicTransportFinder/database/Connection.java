@@ -12,6 +12,7 @@ public class Connection {
 //    private final HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
 
     public HttpResponse<String> getResponse(String params) throws IOException, InterruptedException {
+        System.out.println("sending request with params = " + params);
         HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers
