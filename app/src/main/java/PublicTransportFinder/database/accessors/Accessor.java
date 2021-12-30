@@ -6,8 +6,10 @@ import java.io.IOException;
 public abstract class Accessor{
     private final String postParamsPrefix;
     private final Connection connection = new Connection();
+    private final String[] allLines;
 
-    Accessor(String postParamsPrefix){
+    Accessor(String postParamsPrefix, String[] allLines){
+        this.allLines = allLines;
         this.postParamsPrefix = postParamsPrefix;
     }
 
@@ -19,7 +21,11 @@ public abstract class Accessor{
         return connection.getResponse(getQuery(lines)).body();
     }
 
-    private String getQuery(String[] lines) throws IOException, InterruptedException{
+    public String getAll() throws IOException, InterruptedException {
+        return get(allLines);
+    }
+
+    private String getQuery(String[] lines) {
         StringBuilder query = new StringBuilder();
         for (String line : lines) { query.append(postParamsPrefix).append(line).append("&"); }
         return query.substring(0, query.length()-1);
