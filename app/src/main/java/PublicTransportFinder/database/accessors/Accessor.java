@@ -26,6 +26,7 @@ public abstract class Accessor{
     }
 
     private String getQuery(String[] lines) {
+        if(lines.length == 1) return postParamsPrefix + lines[0];
         StringBuilder query = new StringBuilder();
         for (String line : lines) { query.append(postParamsPrefix).append(line).append("&"); }
         return query.substring(0, query.length()-1);

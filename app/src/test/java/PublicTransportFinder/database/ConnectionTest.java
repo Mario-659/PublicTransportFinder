@@ -39,7 +39,7 @@ class ConnectionTest {
         response = connection.getResponse("busList[bus][]=259&busList[bus][]=257");
         System.out.println(response.body());
 
-        response = connection.getResponse("x=51.104164&y=17.03746&rad=5");
+        response = connection.getResponse("busList[bus][]=257");
         System.out.println(response.body());
 
         response = connection.getResponse("x=51.104164&y=17.03746");

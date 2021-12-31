@@ -1,11 +1,13 @@
 package PublicTransportFinder.view;
 
 import PublicTransportFinder.database.Radar;
+import PublicTransportFinder.database.accessors.Accessor;
+import PublicTransportFinder.database.accessors.BusAccessor;
+import PublicTransportFinder.database.accessors.TramAccessor;
 import PublicTransportFinder.tools.Refresher;
 import PublicTransportFinder.view.markerControllers.BusMarkersController;
 import PublicTransportFinder.view.markerControllers.TramMarkersController;
 import javafx.application.Platform;
-import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -21,7 +23,9 @@ public class HomeController {
     private BusMarkersController busController;
     private TramMarkersController tramController;
     private Refresher refresher;
-    private final Radar radar = new Radar();
+    private final Radar radar = new Radar(new Accessor[]{
+            new BusAccessor(),
+            new TramAccessor()});
 
     @FXML
     private void initialize(){
@@ -37,16 +41,11 @@ public class HomeController {
         bridge.setMember("radar", radar);
     }
 
-    @FXML
-    private void deleteMarkers(ActionEvent actionEvent) {
-        engine.executeScript("document.clearAllBusTramMarkers()");
-    }
+    @FXML private void addBusTracker(ActionEvent actionEvent) {
+        busController.addMarker(actionEvent);}
 
-    @FXML
-    private void addBusTracker(ActionEvent actionEvent) {busController.addMarker(actionEvent);}
-
-    @FXML
-    private void addTramTracker(ActionEvent actionEvent) {tramController.addMarker(actionEvent);}
+    @FXML private void addTramTracker(ActionEvent actionEvent) {
+        tramController.addMarker(actionEvent);}
 
     @FXML private void setGrey(ActionEvent actionEvent) {
         engine.executeScript("document.setMapTypeGrey()"); }
@@ -78,7 +77,8 @@ public class HomeController {
             tramController.refreshMarkers(); });
     }
 
-    private final Map<String, Integer> refreshRate = Map.of("refresh1s", 1, "refresh5s", 5, "refresh10s", 10, "refresh15s", 15, "refresh30s", 30);
+    private final Map<String, Integer> refreshRate = Map.of("refresh1s", 1, "refresh5s", 5,
+            "refresh10s", 10, "refresh15s", 15, "refresh30s", 30);
 
     @FXML
     private void setRefreshRate(ActionEvent actionEvent) {
