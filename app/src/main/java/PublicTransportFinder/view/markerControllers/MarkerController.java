@@ -7,19 +7,20 @@ import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.control.ToggleButton;
+import netscape.javascript.JSObject;
+import org.json.JSONObject;
 
 public abstract class MarkerController {
     private final DataManager dataManager;
-    private final ObservableList<String> lines;
+    private final ObservableList<JSONObject> values;
 
     protected MarkerController(Accessor accessor){
         dataManager = new DataManager(accessor);
-        lines = dataManager.getData();
-        lines.addListener(new ListChangeListener<String>() {
+        values = dataManager.getData();
+        values.addListener(new ListChangeListener<JSONObject>() {
             @Override
-            public void onChanged(Change<? extends String> c) {
+            public void onChanged(Change<? extends JSONObject> c) {
                 updateView();
             }
         });
@@ -36,7 +37,8 @@ public abstract class MarkerController {
     }
 
     protected String dataToJSON(){
-        return JSONParser.parseToJSON(lines);
+        System.out.println(values.toString());
+        return values.toString();
     }
 
     private void updateView(){

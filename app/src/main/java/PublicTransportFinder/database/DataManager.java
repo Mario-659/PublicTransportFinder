@@ -3,58 +3,74 @@ package PublicTransportFinder.database;
 import PublicTransportFinder.database.accessors.Accessor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class DataManager {
     private final Accessor accessor;
-    private final ObservableList<String> data = FXCollections.observableArrayList();
-    private final HashMap<String, String> storedLines = new HashMap<>();
+    private final ObservableList<JSONObject> data = FXCollections.observableArrayList();
+    private final HashSet<String> storedLines = new HashSet<>();
 
     public DataManager(Accessor dataAccessor){
         this.accessor = dataAccessor;
     }
 
     public void save(String line){
-        if(storedLines.containsKey(line)) return;
-        try {
-            storedLines.put(line, accessor.get(line));
-            resetList();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        if(storedLines.contains(line)) return;
+        storedLines.add(line);
+        update();
     }
 
     public void delete(String line){
-        if(storedLines.remove(line) != null){
-            resetList();
+        if(storedLines.remove(line)){
+            update();
         }
     }
 
     public void deleteAll(){
         storedLines.clear();
-        resetList();
+        update();
     }
 
     public void update(){
         try{
-            for (Map.Entry<String, String> entry : storedLines.entrySet()) {
-                    entry.setValue(accessor.get(entry.getKey()));
+            String[] lines = storedLines.toArray(new String[0]);
+            if(lines.length != 0){
+                String retrievedData = accessor.get(lines);
+                JSONArray jsonArray = new JSONArray(retrievedData);
+                List<JSONObject> jsList = new ArrayList<>();
+                for(int i=0; i<jsonArray.length(); i++) jsList.add(jsonArray.getJSONObject(i));
+                data.setAll(jsList);
             }
-            //TODO zrobić tutaj zeby na raz ściągało i z tego nową hash mape może, a potem zrób ten radar
-//            String[] lines = storedLines.keySet().toArray(new String[0]);
-
+            else data.clear();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace(); }
-        resetList();
     }
 
-    public ObservableList<String> getData(){
+    public ObservableList<JSONObject> getData(){
         return data;
     }
 
-    private void resetList(){
-        data.setAll(storedLines.values());
+    private List<String> toArray(String data){
+        return new ArrayList<String>(Arrays.asList(data.replace("[", "").replace("]", "").split(",")));
+    }
+
+    private HashMap<String, JSONArray> sortOut(String data){
+        JSONArray jsonArray = new JSONArray(data);
+        HashMap<String, JSONArray> map = new HashMap<>();
+        for (int i=0; i< jsonArray.length(); i++) {
+            JSONObject obj = jsonArray.getJSONObject(i);
+            String name = obj.getString("name");
+            JSONArray jsArray = map.get(name);
+            if(jsArray == null) {
+                map.put(name, new JSONArray());
+                jsArray = map.get(name);
+            }
+            jsArray.put(obj);
+        }
+        return map;
     }
 }
