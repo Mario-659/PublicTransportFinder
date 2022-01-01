@@ -8,9 +8,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 public class Radar {
-    private float x;
-    private float y;
-    private float proximity;
+    private double x;
+    private double y;
+    private double proximity = 0.5d;
     private JSONArray inProx = new JSONArray();
     private final Accessor[] accessors;
 
@@ -18,21 +18,16 @@ public class Radar {
         this.accessors = accessors;
     }
 
-    public void setProximity(float proximity){
+    public void setProximity(double proximity){
         this.proximity = proximity;
     }
 
-    public void setPoint(float x, float y){
+    public void setPoint(double x, double y){
         this.x = x;
         this.y = y;
     }
 
-    public void setPoint(float x, float y, float proximity){
-        setProximity(proximity);
-        setPoint(x, y);
-    }
-
-    public float getRadius() { return proximity; }
+    public double getRadius() { return proximity; }
 
     public String getDescription(){
         refreshData();
@@ -43,18 +38,20 @@ public class Radar {
         JSONArray data = new JSONArray();
         for (Accessor accessor : accessors) {
             try {
-                data.putAll(accessor.getAll());
+                data.putAll(new JSONArray(accessor.getAll()));
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             } }
         return data;
     }
 
-    private void getInProx(JSONArray jsonArray){
+    private JSONArray getInProx(JSONArray jsonArray){
+        JSONArray filtered = new JSONArray();
         for (int i=0; i<jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
-            if(checkIfInProx(obj)) inProx.put(obj);
+            if(checkIfInProx(obj)) filtered.put(obj);
         }
+        return filtered;
     }
 
     private boolean checkIfInProx(JSONObject object){
@@ -62,8 +59,7 @@ public class Radar {
     }
 
     private void refreshData(){
-        inProx = null;
-        getInProx(retrieveData());
+        inProx = getInProx(retrieveData());
     }
 
 
@@ -74,6 +70,6 @@ public class Radar {
             if(o.getString("type").equals("bus")) buses++;
             else trams++;
         }
-        return "There are " + buses + " buses and " + trams + " trams in " + proximity + " proximity";
+        return "There are " + buses + " buses and " + trams + " trams in " + proximity + " km proximity";
     }
 }

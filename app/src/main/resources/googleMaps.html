@@ -43,12 +43,6 @@
         for(let i=0; i<lines.length; i++){
           addMarker(lines[i].x, lines[i].y, lines[i].name, markersArray, markerStyling )
         }
-        //
-        // for (let i = 0; i < lines.length; i++) {
-        //   for (let j = 0; j < lines[i].length; j++) {
-        //     addMarker(lines[i][j].x, lines[i][j].y, lines[i][j].name, markersArray, markerStyling)
-        //   }
-        // }
       }
 
       document.setMarkers = function setMarkers(lines, markersArray, markerStyling) {
@@ -101,6 +95,36 @@
         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
       }
 
+      document.setMapTypeGrey();
+
+      google.maps.event.addListener(map, 'click', function(event) {
+        addRadar(event.latLng);
+      });
+
+      let radarMarker = null;
+
+      function addRadar(location) {
+        if (radarMarker != null) radarMarker.setMap(null);
+        radarMarker = new google.maps.Marker({
+          position: location,
+          map: map,
+          icon: radarMarkerStyling.icon
+        });
+
+        radar.setPoint(location.lat(), location.lng())
+        addInfoWindow(radarMarker, radar.getDescription())
+
+        google.maps.event.addListener(radarMarker, 'click', function(event) {
+          radarMarker.setMap(null);
+        });
+      }
+
+      function addInfoWindow(marker, message) {
+        var infoWindow = new google.maps.InfoWindow({
+          content: message
+        });
+        infoWindow.open(map, marker);
+      }
 
       const busMarkerStyling = {
         icon: {
@@ -126,47 +150,13 @@
         }
       };
 
-      document.setMapTypeGrey();
-
-      google.maps.event.addListener(map, 'click', function(event) {
-        addRadar(event.latLng);
-      });
-
-      let radarMarker = null;
-      let radarCircle = null;
-
-
-      function addInfoWindow(marker, message) {
-        var infoWindow = new google.maps.InfoWindow({
-          content: message
-        });
-        infoWindow.open(map, marker);
-      }
-
-      function addRadar(location) {
-        if(radarCircle != null) radarCircle.setMap(null);
-        radarCircle = new google.maps.Circle({
-          map: map,
-          radius: 16093,    // 10 miles in metres
-          fillColor: '#AA0000'
-        });
-
-        if (radarMarker != null) radarMarker.setMap(null);
-        radarMarker = new google.maps.Marker({
-          position: location,
-          map: map
-        });
-
-        radarCircle.bindTo('center', radarMarker, 'position');
-
-        // radar.setPoint(location.lat(), location.lng(), 5)
-        // addInfoWindow(radarMarker, radar.getDescription())
-
-        google.maps.event.addListener(radarMarker, 'click', function(event) {
-          radarMarker.setMap(null);
-          radarCircle.setMap(null);
-        });
-      }
+      const radarMarkerStyling = {
+        icon: {
+          url: "images/radarMarker.png",
+          scaledSize: new google.maps.Size(28, 28),
+          labelOrigin: new google.maps.Point(8.5, 10)
+        },
+      };
     }
   </script>
 </head>

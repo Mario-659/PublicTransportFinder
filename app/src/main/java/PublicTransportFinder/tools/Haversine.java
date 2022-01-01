@@ -4,6 +4,9 @@ public class Haversine {
 
     public static double haversine(double lat1, double lon1,
                             double lat2, double lon2) {
+
+        //TODO refactor
+
         // distance between latitudes and longitudes
         double dLat = Math.toRadians(lat2 - lat1);
         double dLon = Math.toRadians(lon2 - lon1);

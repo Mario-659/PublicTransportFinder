@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -23,11 +22,6 @@
          <children>
             <MenuBar layoutX="1.0" layoutY="13.0" prefHeight="35.2" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
                   <Menu mnemonicParsing="false" text="Map type">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#setGrey" text="Grey" />
@@ -38,31 +32,23 @@
                         <MenuItem mnemonicParsing="false" onAction="#setTerrain" text="Terrain" />
                     </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Trams">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="View">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <CheckMenuItem mnemonicParsing="false" text="Bus markers" />
-                        <CheckMenuItem mnemonicParsing="false" text="Tram markers" />
-                    </items>
-                  </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#update" text="About" />
-                  </items>
-                </Menu>
                   <Menu mnemonicParsing="false" text="Refresh Rate">
                      <items>
-                        <MenuItem fx:id="refresh1s" mnemonicParsing="false" onAction="#setRefreshRate" text="1 s" />
                         <MenuItem fx:id="refresh5s" mnemonicParsing="false" onAction="#setRefreshRate" text="5 s" />
                         <MenuItem fx:id="refresh10s" mnemonicParsing="false" onAction="#setRefreshRate" text="10 s" />
                         <MenuItem fx:id="refresh15s" mnemonicParsing="false" onAction="#setRefreshRate" text="15 s" />
                         <MenuItem fx:id="refresh30s" mnemonicParsing="false" onAction="#setRefreshRate" text="30 s" />
                      </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Radar proximity">
+                    <items>
+                        <MenuItem fx:id="prox100m" mnemonicParsing="false" onAction="#setProximity" text="100 m" />
+                        <MenuItem fx:id="prox250m" mnemonicParsing="false" onAction="#setProximity" text="250 m" />
+                        <MenuItem fx:id="prox500m" mnemonicParsing="false" onAction="#setProximity" text="500 m" />
+                        <MenuItem fx:id="prox1km" mnemonicParsing="false" onAction="#setProximity" text="1 km" />
+                        <MenuItem fx:id="prox2km500m" mnemonicParsing="false" onAction="#setProximity" text="2,5 km" />
+                        <MenuItem fx:id="prox5km" mnemonicParsing="false" onAction="#setProximity" text="5 km" />
+                    </items>
                   </Menu>
               </menus>
             </MenuBar>

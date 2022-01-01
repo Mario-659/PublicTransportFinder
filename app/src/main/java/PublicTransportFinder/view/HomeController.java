@@ -65,24 +65,27 @@ public class HomeController {
     @FXML private void setTerrain(ActionEvent actionEvent) {
         engine.executeScript("document.setMapTypeTerrain()"); }
 
-    @FXML
-    public void update(ActionEvent actionEvent) {
-        Runnable runnable = refresher.getRunAll();
-        runnable.run();
-    }
-
     private void updateMarkers(){
         Platform.runLater( () -> {
             busController.refreshMarkers();
             tramController.refreshMarkers(); });
     }
 
-    private final Map<String, Integer> refreshRate = Map.of("refresh1s", 1, "refresh5s", 5,
+    private final Map<String, Integer> refreshRate = Map.of( "refresh5s", 5,
             "refresh10s", 10, "refresh15s", 15, "refresh30s", 30);
 
     @FXML
     private void setRefreshRate(ActionEvent actionEvent) {
         String id = ((MenuItem) actionEvent.getSource()).getId();
         refresher.setRefreshRate(refreshRate.get(id));
+    }
+
+    private final Map<String, Double> proximity = Map.of("prox100m", 0.1d,
+            "prox250m", 0.25d, "prox500m", 0.5d, "prox1km", 1d, "prox2km500m", 2.5d, "prox5km", 5d);
+
+    @FXML
+    private void setProximity(ActionEvent actionEvent){
+        String id = ((MenuItem) actionEvent.getSource()).getId();
+        radar.setProximity(proximity.get(id));
     }
 }
