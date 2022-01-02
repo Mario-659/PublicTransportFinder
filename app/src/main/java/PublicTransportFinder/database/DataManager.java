@@ -8,11 +8,32 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class DataManager {
     private final Accessor accessor;
     private final ObservableList<JSONObject> data = FXCollections.observableArrayList();
     private final HashSet<String> storedLines = new HashSet<>();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+
+    private final Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            try{
+                String[] lines = storedLines.toArray(new String[0]);
+                if(lines.length != 0){
+                    String retrievedData = accessor.get(lines);
+                    JSONArray jsonArray = new JSONArray(retrievedData);
+                    List<JSONObject> jsList = new ArrayList<>();
+                    for(int i=0; i<jsonArray.length(); i++) jsList.add(jsonArray.getJSONObject(i));
+                    data.setAll(jsList);
+                }
+                else data.clear();
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace(); }
+        }
+    };
 
     public DataManager(Accessor dataAccessor){
         this.accessor = dataAccessor;
@@ -36,18 +57,7 @@ public class DataManager {
     }
 
     public void update(){
-        try{
-            String[] lines = storedLines.toArray(new String[0]);
-            if(lines.length != 0){
-                String retrievedData = accessor.get(lines);
-                JSONArray jsonArray = new JSONArray(retrievedData);
-                List<JSONObject> jsList = new ArrayList<>();
-                for(int i=0; i<jsonArray.length(); i++) jsList.add(jsonArray.getJSONObject(i));
-                data.setAll(jsList);
-            }
-            else data.clear();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace(); }
+        executor.submit(runnable);
     }
 
     public ObservableList<JSONObject> getData(){
