@@ -2,13 +2,11 @@ package PublicTransportFinder.view.markerControllers;
 
 import PublicTransportFinder.database.DataManager;
 import PublicTransportFinder.database.accessors.Accessor;
-import PublicTransportFinder.tools.JSONParser;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ToggleButton;
-import netscape.javascript.JSObject;
 import org.json.JSONObject;
 
 public abstract class MarkerController {
@@ -37,7 +35,6 @@ public abstract class MarkerController {
     }
 
     protected String dataToJSON(){
-        System.out.println(values.toString());
         return values.toString();
     }
 
